@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Privacy Policy | The Masterful 8&#8482;</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container"><div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-dark.svg" alt="The Masterful 8™" height="44"></a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="model.html" class="nav-link">The System</a></li>
+        <li class="nav-item"><a href="enterprise.html" class="nav-link">For Organizations</a></li>
+        <li class="nav-item"><a href="partners.html" class="nav-link">For Coaches &amp; Partners</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:var(--space-4);"><a href="assessment.html" class="btn nav-cta">Free Assessment</a></div>
+      <button class="nav-mobile-toggle" aria-label="Open Menu"><span></span></button>
+    </div></div>
+  </nav>
+  <div class="nav-mobile-menu">
+    <ul class="nav-links">
+      <li><a href="model.html" class="nav-link">The System</a></li>
+      <li><a href="enterprise.html" class="nav-link">For Organizations</a></li>
+      <li><a href="partners.html" class="nav-link">For Coaches &amp; Partners</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <!-- HEADER -->
+  <div class="page-header bg-dark" style="padding:var(--space-32) 0 var(--space-12);">
+    <div class="container"><h1>Privacy Policy</h1></div>
+  </div>
+
+  <!-- CONTENT -->
+  <section class="section bg-dark">
+    <div class="container content-section" style="max-width:700px;color:var(--color-light-gray);">
+      <h3 style="color:var(--color-off-white);margin-bottom:var(--space-4);">1. Data Protection at a Glance</h3>
+      <p>The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data that can be used to personally identify you.</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">2. Data Controller</h3>
+      <p>Christian Naundorf<br>CNA Executive Leadership Coach<br>Oberer M&uuml;hlfeldweg 1c<br>83250 Marquartstein, Germany<br>Email: hello@masterful8.com</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">3. Data Collection on This Website</h3>
+      <p><strong style="color:var(--color-off-white);">Server log files:</strong> The provider of this website automatically collects and stores information in server log files, which your browser automatically transmits. These are: browser type/version, operating system, referrer URL, hostname, time of server request. This data is not combined with other data sources.</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">4. Hosting</h3>
+      <p>This website is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Vercel may collect technical data such as IP addresses for the purpose of providing the hosting service. For more information, see <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--color-gold);">Vercel's Privacy Policy</a>.</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">5. Google Fonts</h3>
+      <p>This website uses Google Fonts for consistent typography. When you access a page, your browser loads the required fonts from Google's servers. Google may collect your IP address. For more information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--color-gold);">Google's Privacy Policy</a>.</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">6. Your Rights</h3>
+      <p>You have the right to receive information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction or deletion of this data. For this purpose, as well as for further questions regarding data protection, you can contact us at any time at hello@masterful8.com.</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">7. Assessment Data</h3>
+      <p>When you use the Self-Assessment tool, your responses are processed locally in your browser. No assessment data is transmitted to our servers unless you explicitly choose to create an account and save your results.</p>
+
+      <p style="margin-top:var(--space-12);font-size:var(--text-sm);color:var(--color-gray);">Last updated: March 2026</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Masterful 8&#8482;. All rights reserved.</p>
+        <div class="footer-legal"><a href="imprint.html">Imprint</a><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50);});
+    const mt=document.querySelector('.nav-mobile-toggle'),mm=document.querySelector('.nav-mobile-menu');
+    mt.addEventListener('click',()=>{mt.classList.toggle('open');mm.classList.toggle('open');document.body.classList.toggle('menu-open');});
+  </script>
+</body>
+</html>

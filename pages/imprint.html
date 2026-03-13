@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Imprint | The Masterful 8&#8482;</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container"><div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-dark.svg" alt="The Masterful 8™" height="44"></a>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="model.html" class="nav-link">The System</a></li>
+        <li class="nav-item"><a href="enterprise.html" class="nav-link">For Organizations</a></li>
+        <li class="nav-item"><a href="partners.html" class="nav-link">For Coaches &amp; Partners</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:var(--space-4);"><a href="assessment.html" class="btn nav-cta">Free Assessment</a></div>
+      <button class="nav-mobile-toggle" aria-label="Open Menu"><span></span></button>
+    </div></div>
+  </nav>
+  <div class="nav-mobile-menu">
+    <ul class="nav-links">
+      <li><a href="model.html" class="nav-link">The System</a></li>
+      <li><a href="enterprise.html" class="nav-link">For Organizations</a></li>
+      <li><a href="partners.html" class="nav-link">For Coaches &amp; Partners</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <!-- HEADER -->
+  <div class="page-header bg-dark" style="padding:var(--space-32) 0 var(--space-12);">
+    <div class="container"><h1>Imprint</h1></div>
+  </div>
+
+  <!-- CONTENT -->
+  <section class="section bg-dark">
+    <div class="container content-section" style="max-width:700px;color:var(--color-light-gray);">
+      <h3 style="color:var(--color-off-white);margin-bottom:var(--space-4);">Information pursuant to &sect; 5 TMG</h3>
+      <p>Christian Naundorf<br>CNA Executive Leadership Coach<br>Oberer M&uuml;hlfeldweg 1c<br>83250 Marquartstein, Germany</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">Contact</h3>
+      <p>Email: hello@masterful8.com</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">VAT ID</h3>
+      <p>VAT identification number pursuant to &sect; 27 a Umsatzsteuergesetz:<br>DE254553801</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">Trademarks</h3>
+      <p>The Masterful 8&#8482;, The Emperor Effect&#8482;, and Leadership Beyond Authority&#8482; are registered trademarks.</p>
+
+      <h3 style="color:var(--color-off-white);margin-top:var(--space-8);margin-bottom:var(--space-4);">Disclaimer</h3>
+      <p>Despite careful content control, we assume no liability for the content of external links. The content of linked pages is the sole responsibility of their operators.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Masterful 8&#8482;. All rights reserved.</p>
+        <div class="footer-legal"><a href="imprint.html">Imprint</a><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50);});
+    const mt=document.querySelector('.nav-mobile-toggle'),mm=document.querySelector('.nav-mobile-menu');
+    mt.addEventListener('click',()=>{mt.classList.toggle('open');mm.classList.toggle('open');document.body.classList.toggle('menu-open');});
+  </script>
+</body>
+</html>
