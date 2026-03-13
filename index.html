@@ -116,8 +116,8 @@
 
     /* Audience Cards */
     .audience-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--color-white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       padding: var(--space-8);
       text-align: center;
       transition: all var(--transition-base);
@@ -158,12 +158,12 @@
       font-weight: var(--font-semibold);
       letter-spacing: var(--tracking-wide);
       margin-bottom: var(--space-3);
-      color: var(--color-off-white);
+      color: var(--color-charcoal);
     }
 
     .audience-card p {
       font-size: var(--text-sm);
-      color: var(--color-gray);
+      color: var(--color-charcoal);
       margin-bottom: var(--space-6);
       line-height: var(--leading-relaxed);
     }
@@ -192,7 +192,7 @@
 
     .step-card p {
       font-size: var(--text-sm);
-      color: var(--color-gray);
+      color: var(--color-charcoal);
       line-height: var(--leading-relaxed);
     }
 
@@ -345,6 +345,15 @@
         font-size: var(--text-3xl);
       }
     }
+
+    /* Light-section overrides */
+    .bg-off-white .checklist-no li {
+      color: var(--color-charcoal);
+    }
+
+    .bg-off-white .step-card p {
+      color: var(--color-charcoal);
+    }
   </style>
 </head>
 <body>
@@ -356,7 +365,7 @@
     <div class="container">
       <div class="nav-inner">
         <a href="index.html" class="nav-logo">
-          <img src="images/logo-dark.svg" alt="The Masterful 8™ — Outcome-Based Model for Strategic Organizational Development" height="44">
+          <img src="images/logo-compact-dark.svg" alt="The Masterful 8™ — Outcome-Based Model for Strategic Organizational Development" height="44">
         </a>
 
         <ul class="nav-links">
@@ -536,11 +545,11 @@
   <!-- ============================================
        AUDIENCE PATHS
        ============================================ -->
-  <section class="section bg-dark">
+  <section class="section bg-off-white">
     <div class="container">
       <div class="text-center" style="margin-bottom: var(--space-16);">
         <p class="label">One Framework. Multiple Paths.</p>
-        <h2 style="margin-top: var(--space-4); color: var(--color-off-white);">
+        <h2 style="margin-top: var(--space-4); color: var(--color-charcoal);">
           How can we help you?
         </h2>
       </div>
@@ -651,11 +660,11 @@
   <!-- ============================================
        HOW IT WORKS
        ============================================ -->
-  <section class="section bg-dark">
+  <section class="section bg-off-white">
     <div class="container">
       <div class="text-center" style="margin-bottom: var(--space-16);">
         <p class="label">How It Works</p>
-        <h2 style="margin-top: var(--space-4); color: var(--color-off-white);">
+        <h2 style="margin-top: var(--space-4); color: var(--color-charcoal);">
           Three steps to clarity
         </h2>
       </div>
@@ -663,7 +672,7 @@
       <div class="grid grid-3">
         <div class="step-card">
           <div class="step-number">1</div>
-          <h4 style="color: var(--color-off-white);">Assess</h4>
+          <h4 style="color: var(--color-charcoal);">Assess</h4>
           <p>
             Rate your team across 24 behavioral indicators.
             Takes 8 minutes. Produces a quantified M8 Score
@@ -673,7 +682,7 @@
 
         <div class="step-card">
           <div class="step-number">2</div>
-          <h4 style="color: var(--color-off-white);">Understand</h4>
+          <h4 style="color: var(--color-charcoal);">Understand</h4>
           <p>
             See exactly where your team excels and where
             invisible gaps are holding back performance.
@@ -683,7 +692,7 @@
 
         <div class="step-card">
           <div class="step-number">3</div>
-          <h4 style="color: var(--color-off-white);">Act</h4>
+          <h4 style="color: var(--color-charcoal);">Act</h4>
           <p>
             Get targeted recommendations. Focus development
             investment where it creates the highest leverage.
@@ -794,14 +803,14 @@
   <!-- ============================================
        WHAT M8 IS / IS NOT
        ============================================ -->
-  <section class="section bg-dark">
+  <section class="section bg-off-white">
     <div class="container">
       <div class="grid grid-2" style="max-width: 900px; margin: 0 auto;">
         <div>
-          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-8);">
+          <h3 style="color: var(--color-charcoal); margin-bottom: var(--space-8);">
             What The Masterful 8 <span class="text-gold">is</span>
           </h3>
-          <ul class="checklist checklist-yes" style="color: var(--color-light-gray);">
+          <ul class="checklist checklist-yes" style="color: var(--color-charcoal);">
             <li>A diagnostic &amp; measurement model</li>
             <li>A common language for capabilities</li>
             <li>A strategic compass for development</li>
@@ -809,10 +818,10 @@
           </ul>
         </div>
         <div>
-          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-8);">
+          <h3 style="color: var(--color-charcoal); margin-bottom: var(--space-8);">
             What it is <span style="color: var(--color-deep-red);">not</span>
           </h3>
-          <ul class="checklist checklist-no">
+          <ul class="checklist checklist-no" style="color: var(--color-charcoal);">
             <li>A work methodology (not Agile, Scrum, SAFe)</li>
             <li>A fixed curriculum or syllabus</li>
             <li>A performance management system</li>
@@ -905,27 +914,27 @@
   <!-- ============================================
        ENTERPRISE + COACHES SPLIT CTA
        ============================================ -->
-  <section class="section bg-dark">
+  <section class="section bg-off-white">
     <div class="container">
       <div class="grid grid-2">
-        <div class="cta-banner">
+        <div class="cta-banner" style="background: var(--color-white); border: 1px solid rgba(0,0,0,0.08);">
           <p class="label" style="margin-bottom: var(--space-4);">For Organizations</p>
-          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-4);">
+          <h3 style="color: var(--color-charcoal); margin-bottom: var(--space-4);">
             Scale Self-Sustainability Across Your Organization
           </h3>
-          <p style="color: var(--color-gray); margin-bottom: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+          <p style="color: var(--color-charcoal); margin-bottom: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
             Deploy The Masterful 8 across teams and business units.
             Get aggregated insights, heatmaps, and executive reporting.
           </p>
           <a href="pages/enterprise.html" class="btn btn-primary">Enterprise Solutions</a>
         </div>
 
-        <div class="cta-banner">
+        <div class="cta-banner" style="background: var(--color-white); border: 1px solid rgba(0,0,0,0.08);">
           <p class="label" style="margin-bottom: var(--space-4);">For Coaches &amp; Partners</p>
-          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-4);">
+          <h3 style="color: var(--color-charcoal); margin-bottom: var(--space-4);">
             Add M8 to Your Practice
           </h3>
-          <p style="color: var(--color-gray); margin-bottom: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+          <p style="color: var(--color-charcoal); margin-bottom: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
             Get certified, license the platform, and join a global network
             of practitioners using The Masterful 8.
           </p>
@@ -952,7 +961,7 @@
         </p>
         <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
           <a href="pages/assessment.html" class="btn btn-primary">Start Free Assessment</a>
-          <a href="pages/contact.html" class="btn btn-secondary">Book a Discovery Call</a>
+          <a href="https://executive-leadership-coach.com/booking" target="_blank" rel="noopener" class="btn btn-secondary">Book a Discovery Call</a>
         </div>
       </div>
     </div>
@@ -967,7 +976,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" style="display: inline-block;">
-            <img src="images/logo-dark.svg" alt="The Masterful 8™" height="50">
+            <img src="images/logo-compact-dark.svg" alt="The Masterful 8™" height="50">
           </a>
           <p style="margin-top: var(--space-4);">
             The global standard for measuring what

@@ -22,7 +22,38 @@
       display: flex;
       align-items: center;
       gap: var(--space-6);
+      margin-bottom: 0;
+      cursor: pointer;
+      position: relative;
+      padding-right: 40px;
+      transition: margin-bottom 0.3s ease;
+    }
+    .dimension-full.open .dim-header {
       margin-bottom: var(--space-6);
+    }
+    .dim-header::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(0deg);
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid var(--color-gold);
+      border-bottom: 2px solid var(--color-gold);
+      transform: translateY(-50%) rotate(45deg);
+      transition: transform 0.3s ease;
+    }
+    .dimension-full.open .dim-header::after {
+      transform: translateY(-30%) rotate(-135deg);
+    }
+    .dim-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .dimension-full.open .dim-body {
+      max-height: 600px;
     }
     .dim-circle {
       width: 64px;
@@ -78,53 +109,73 @@
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a href="../index.html" class="nav-logo">
-          <img src="../images/logo-dark.svg" alt="The Masterful 8™" height="44">
-        </a>
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a href="model.html" class="nav-link">The System</a>
-            <div class="nav-dropdown"><div class="nav-dropdown-inner">
-              <a href="model.html">The Model</a>
-              <a href="model.html#dimensions">8 Dimensions</a>
-              <a href="model.html#indicators">24 Behavioral Indicators</a>
-              <a href="model.html#difference">What M8 Is &amp; Isn't</a>
-              <div style="border-top:1px solid rgba(201,169,98,0.3);margin:6px 0;"></div>
-              <a href="assessment.html" style="color:var(--color-gold);font-weight:500;">Free Self-Assessment</a>
-            </div></div>
-          </li>
-          <li class="nav-item">
-            <a href="enterprise.html" class="nav-link">For Organizations</a>
-            <div class="nav-dropdown"><div class="nav-dropdown-inner">
-              <a href="enterprise.html">Enterprise Solutions</a>
-              <a href="enterprise.html#readiness">Excellence Readiness</a>
-              <a href="enterprise.html#journeys">Performance Journeys</a>
-            </div></div>
-          </li>
-          <li class="nav-item">
-            <a href="partners.html" class="nav-link">For Coaches &amp; Partners</a>
-            <div class="nav-dropdown"><div class="nav-dropdown-inner">
-              <a href="partners.html">Why License M8</a>
-              <a href="partners.html#certification">Certification Program</a>
-              <a href="partners.html#network">Practitioner Network</a>
-            </div></div>
-          </li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-        </ul>
-        <div style="display:flex;align-items:center;gap:var(--space-4);">
-          <a href="assessment.html" class="btn nav-cta">Free Assessment</a>
-        </div>
-        <button class="nav-mobile-toggle" aria-label="Open Menu"><span></span></button>
-      </div>
-    </div>
+    <div class="container"><div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-compact-dark.svg" alt="The Masterful 8™" height="44"></a>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="model.html" class="nav-link">The System</a>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="model.html">The Model</a>
+            <a href="model.html#dimensions">8 Dimensions</a>
+            <a href="model.html#indicators">24 Behavioral Indicators</a>
+            <a href="model.html#difference">What M8 Is &amp; Isn't</a>
+            <div style="border-top:1px solid rgba(201,169,98,0.3);margin:6px 0;"></div>
+            <a href="assessment.html" style="color:var(--color-gold);font-weight:500;">Free Self-Assessment</a>
+          </div></div>
+        </li>
+        <li class="nav-item">
+          <a href="enterprise.html" class="nav-link">For Organizations</a>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="enterprise.html">Enterprise Solutions</a>
+            <a href="enterprise.html#readiness">Excellence Readiness</a>
+            <a href="enterprise.html#journeys">Performance Journeys</a>
+            <a href="enterprise.html#cases">Case Studies</a>
+          </div></div>
+        </li>
+        <li class="nav-item">
+          <a href="partners.html" class="nav-link">For Coaches &amp; Partners</a>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="partners.html">Why License M8</a>
+            <a href="partners.html#certification">Certification Program</a>
+            <a href="partners.html#network">Practitioner Network</a>
+          </div></div>
+        </li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:var(--space-4);"><a href="assessment.html" class="btn nav-cta">Free Assessment</a></div>
+      <button class="nav-mobile-toggle" aria-label="Open Menu"><span></span></button>
+    </div></div>
   </nav>
   <div class="nav-mobile-menu">
     <ul class="nav-links">
-      <li class="nav-item"><a href="model.html" class="nav-link">The System</a><button class="nav-dropdown-toggle"></button><div class="nav-dropdown"><div class="nav-dropdown-inner"><a href="model.html">The Model</a><a href="model.html#dimensions">8 Dimensions</a><a href="assessment.html">Free Assessment</a></div></div></li>
-      <li class="nav-item"><a href="enterprise.html" class="nav-link">For Organizations</a><button class="nav-dropdown-toggle"></button><div class="nav-dropdown"><div class="nav-dropdown-inner"><a href="enterprise.html">Enterprise Solutions</a><a href="enterprise.html#readiness">Excellence Readiness</a><a href="enterprise.html#journeys">Performance Journeys</a></div></div></li>
-      <li class="nav-item"><a href="partners.html" class="nav-link">For Coaches &amp; Partners</a><button class="nav-dropdown-toggle"></button><div class="nav-dropdown"><div class="nav-dropdown-inner"><a href="partners.html">Why License M8</a><a href="partners.html#certification">Certification</a><a href="partners.html#network">Network</a></div></div></li>
+      <li class="nav-item">
+        <a href="model.html" class="nav-link">The System</a>
+        <button class="nav-dropdown-toggle" aria-label="Toggle submenu"></button>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="model.html">The Model</a>
+          <a href="model.html#dimensions">8 Dimensions</a>
+          <a href="model.html#indicators">24 Behavioral Indicators</a>
+          <a href="assessment.html">Free Self-Assessment</a>
+        </div></div>
+      </li>
+      <li class="nav-item">
+        <a href="enterprise.html" class="nav-link">For Organizations</a>
+        <button class="nav-dropdown-toggle" aria-label="Toggle submenu"></button>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="enterprise.html">Enterprise Solutions</a>
+          <a href="enterprise.html#readiness">Excellence Readiness</a>
+          <a href="enterprise.html#journeys">Performance Journeys</a>
+        </div></div>
+      </li>
+      <li class="nav-item">
+        <a href="partners.html" class="nav-link">For Coaches &amp; Partners</a>
+        <button class="nav-dropdown-toggle" aria-label="Toggle submenu"></button>
+        <div class="nav-dropdown"><div class="nav-dropdown-inner">
+          <a href="partners.html">Why License M8</a>
+          <a href="partners.html#certification">Certification</a>
+          <a href="partners.html#network">Practitioner Network</a>
+        </div></div>
+      </li>
       <li><a href="about.html" class="nav-link">About</a></li>
     </ul>
     <a href="assessment.html" class="btn nav-cta" style="margin-top:var(--space-6);">Free Assessment</a>
@@ -150,7 +201,7 @@
         </p>
       </div>
       <p style="margin-top:var(--space-8);color:var(--color-light-gray);font-size:var(--text-lg);line-height:var(--leading-relaxed);">
-        The Masterful 8 measures the <em>leading</em> behavioral indicators that predict organizational performance.
+        The Masterful 8&#8482; measures the <em>leading</em> behavioral indicators that predict organizational performance.
         8 dimensions. 24 behavioral markers. One shared picture of where your team truly stands.
       </p>
     </div>
@@ -166,17 +217,19 @@
 
       <div id="indicators">
         <!-- Dimension 1 -->
-        <div class="dimension-full">
+        <div class="dimension-full open">
           <div class="dim-header">
             <div class="dim-circle">1</div>
             <div><div class="dim-title">Self-Discipline</div><div class="dim-subtitle">Reliability &amp; conflict capability</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Without reliability, preparation, and the willingness to work through conflict, all other capabilities collapse.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">1.1</span><span class="indicator-text">Do what they say ("walk the talk") and stand by decisions once made ("disagree and commit").</span></li>
-            <li class="indicator-item"><span class="indicator-num">1.2</span><span class="indicator-text">Come prepared to meetings and alignments, respecting everyone else's time.</span></li>
-            <li class="indicator-item"><span class="indicator-num">1.3</span><span class="indicator-text">Name conflicts early and work them through instead of avoiding or postponing them.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Without reliability, preparation, and the willingness to work through conflict, all other capabilities collapse.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">1.1</span><span class="indicator-text">Do what they say ("walk the talk") and stand by decisions once made ("disagree and commit").</span></li>
+              <li class="indicator-item"><span class="indicator-num">1.2</span><span class="indicator-text">Come prepared to meetings and alignments, respecting everyone else's time.</span></li>
+              <li class="indicator-item"><span class="indicator-num">1.3</span><span class="indicator-text">Name conflicts early and work them through instead of avoiding or postponing them.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 2 -->
@@ -185,12 +238,14 @@
             <div class="dim-circle">2</div>
             <div><div class="dim-title">Self-Organize</div><div class="dim-subtitle">Structure, data &amp; outcomes</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Data-based decisions, outcome focus, and clarity on mission and roles are the core mechanics of value creation.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">2.1</span><span class="indicator-text">Make the majority of their decisions based on data (at least ~70%) and consciously complement it with experience.</span></li>
-            <li class="indicator-item"><span class="indicator-num">2.2</span><span class="indicator-text">Talk consistently about outcomes and impact; not about busyness and activities.</span></li>
-            <li class="indicator-item"><span class="indicator-num">2.3</span><span class="indicator-text">Create clarity in the team about mission, priorities, and roles.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Data-based decisions, outcome focus, and clarity on mission and roles are the core mechanics of value creation.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">2.1</span><span class="indicator-text">Make the majority of their decisions based on data (at least ~70%) and consciously complement it with experience.</span></li>
+              <li class="indicator-item"><span class="indicator-num">2.2</span><span class="indicator-text">Talk consistently about outcomes and impact; not about busyness and activities.</span></li>
+              <li class="indicator-item"><span class="indicator-num">2.3</span><span class="indicator-text">Create clarity in the team about mission, priorities, and roles.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 3 -->
@@ -199,12 +254,14 @@
             <div class="dim-circle">3</div>
             <div><div class="dim-title">Self-Directed</div><div class="dim-subtitle">Goals &amp; value focus</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Setting stretch goals and delivering relevant results is the engine that turns activity into real performance.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">3.1</span><span class="indicator-text">Jointly define meaningful, ambitious ("stretch") goals and concrete results (Objectives &amp; Key Results).</span></li>
-            <li class="indicator-item"><span class="indicator-num">3.2</span><span class="indicator-text">Produce outcomes that are genuinely relevant for stakeholders and reduce unnecessary output and waste.</span></li>
-            <li class="indicator-item"><span class="indicator-num">3.3</span><span class="indicator-text">Proactively seek collaboration with other teams to best achieve shared goals.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Setting stretch goals and delivering relevant results is the engine that turns activity into real performance.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">3.1</span><span class="indicator-text">Jointly define meaningful, ambitious ("stretch") goals and concrete results (Objectives &amp; Key Results).</span></li>
+              <li class="indicator-item"><span class="indicator-num">3.2</span><span class="indicator-text">Produce outcomes that are genuinely relevant for stakeholders and reduce unnecessary output and waste.</span></li>
+              <li class="indicator-item"><span class="indicator-num">3.3</span><span class="indicator-text">Proactively seek collaboration with other teams to best achieve shared goals.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 4 -->
@@ -213,12 +270,14 @@
             <div class="dim-circle">4</div>
             <div><div class="dim-title">Self-Learning</div><div class="dim-subtitle">Curiosity &amp; improvement</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">If a team does not understand how it continuously learns and tests its hypotheses, performance remains a matter of luck.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">4.1</span><span class="indicator-text">Ask questions to really understand before they judge or decide.</span></li>
-            <li class="indicator-item"><span class="indicator-num">4.2</span><span class="indicator-text">Actively seek facts, data, and feedback to test their assumptions.</span></li>
-            <li class="indicator-item"><span class="indicator-num">4.3</span><span class="indicator-text">Derive concrete improvements for their approach, collaboration, and outcomes from experience.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">If a team does not understand how it continuously learns and tests its hypotheses, performance remains a matter of luck.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">4.1</span><span class="indicator-text">Ask questions to really understand before they judge or decide.</span></li>
+              <li class="indicator-item"><span class="indicator-num">4.2</span><span class="indicator-text">Actively seek facts, data, and feedback to test their assumptions.</span></li>
+              <li class="indicator-item"><span class="indicator-num">4.3</span><span class="indicator-text">Derive concrete improvements for their approach, collaboration, and outcomes from experience.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 5 -->
@@ -227,12 +286,14 @@
             <div class="dim-circle">5</div>
             <div><div class="dim-title">Self-Calibrate</div><div class="dim-subtitle">Real-time course correction</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Real-time feedback, reflection, and conscious course correction keeps the team on course.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">5.1</span><span class="indicator-text">Give each other situational, sometimes uncomfortable, but clear feedback ("tough love") without attacking the person.</span></li>
-            <li class="indicator-item"><span class="indicator-num">5.2</span><span class="indicator-text">Take time for open reflection and explicitly articulate both experiences and learnings.</span></li>
-            <li class="indicator-item"><span class="indicator-num">5.3</span><span class="indicator-text">Decide together in real time whether to persevere or deliberately pivot &mdash; and justify with data and experience.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Real-time feedback, reflection, and conscious course correction keeps the team on course.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">5.1</span><span class="indicator-text">Give each other situational, sometimes uncomfortable, but clear feedback ("tough love") without attacking the person.</span></li>
+              <li class="indicator-item"><span class="indicator-num">5.2</span><span class="indicator-text">Take time for open reflection and explicitly articulate both experiences and learnings.</span></li>
+              <li class="indicator-item"><span class="indicator-num">5.3</span><span class="indicator-text">Decide together in real time whether to persevere or deliberately pivot &mdash; and justify with data and experience.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 6 -->
@@ -241,12 +302,14 @@
             <div class="dim-circle">6</div>
             <div><div class="dim-title">Self-Challenge</div><div class="dim-subtitle">Constructive dissent &amp; accountability</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Constructive dissent and challenging across and up the hierarchy prevent groupthink and flying blind.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">6.1</span><span class="indicator-text">Actively question their own assumptions and team thinking patterns and use constructive debate instead of harmony at any price.</span></li>
-            <li class="indicator-item"><span class="indicator-num">6.2</span><span class="indicator-text">Give timely critical feedback "upwards" and challenge decisions based on facts, impact, and values.</span></li>
-            <li class="indicator-item"><span class="indicator-num">6.3</span><span class="indicator-text">Hold one another accountable for results and learning &mdash; not just for effort and activity.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Constructive dissent and challenging across and up the hierarchy prevent groupthink and flying blind.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">6.1</span><span class="indicator-text">Actively question their own assumptions and team thinking patterns and use constructive debate instead of harmony at any price.</span></li>
+              <li class="indicator-item"><span class="indicator-num">6.2</span><span class="indicator-text">Give timely critical feedback "upwards" and challenge decisions based on facts, impact, and values.</span></li>
+              <li class="indicator-item"><span class="indicator-num">6.3</span><span class="indicator-text">Hold one another accountable for results and learning &mdash; not just for effort and activity.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 7 -->
@@ -255,12 +318,14 @@
             <div class="dim-circle">7</div>
             <div><div class="dim-title">Self-Caring</div><div class="dim-subtitle">Human connection &amp; sustainability</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Without conscious management of workload, pressure, well-being, and appreciation, no performance model is sustainable.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">7.1</span><span class="indicator-text">Speak openly about workload, overload, and stress and actively organize relief or support.</span></li>
-            <li class="indicator-item"><span class="indicator-num">7.2</span><span class="indicator-text">Are present and attentive in meetings, truly listen to each other, and remain approachable.</span></li>
-            <li class="indicator-item"><span class="indicator-num">7.3</span><span class="indicator-text">Show concrete, regular appreciation and recognition &mdash; for contributions, progress, and learning.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Without conscious management of workload, pressure, well-being, and appreciation, no performance model is sustainable.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">7.1</span><span class="indicator-text">Speak openly about workload, overload, and stress and actively organize relief or support.</span></li>
+              <li class="indicator-item"><span class="indicator-num">7.2</span><span class="indicator-text">Are present and attentive in meetings, truly listen to each other, and remain approachable.</span></li>
+              <li class="indicator-item"><span class="indicator-num">7.3</span><span class="indicator-text">Show concrete, regular appreciation and recognition &mdash; for contributions, progress, and learning.</span></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Dimension 8 -->
@@ -269,28 +334,30 @@
             <div class="dim-circle">8</div>
             <div><div class="dim-title">Self-Empowering</div><div class="dim-subtitle">Adult relationship to authority</div></div>
           </div>
-          <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Dependency (victim) and cynical distrust (critic) are the Emperor Effect &mdash; both signs of stagnation.</p>
-          <ul class="indicator-list">
-            <li class="indicator-item"><span class="indicator-num">8.1</span><span class="indicator-text">Engage with leaders and stakeholders at eye level and bring their perspective to the table clearly.</span></li>
-            <li class="indicator-item"><span class="indicator-num">8.2</span><span class="indicator-text">Act autonomously within their mandate and do not wait for approvals when they can decide themselves.</span></li>
-            <li class="indicator-item"><span class="indicator-num">8.3</span><span class="indicator-text">Proactively seek help or external expertise when needed &mdash; without slipping into dependency.</span></li>
-          </ul>
+          <div class="dim-body">
+            <p style="color:var(--color-gray);margin-bottom:var(--space-6);line-height:var(--leading-relaxed);">Dependency (victim) and cynical distrust (critic) are the Emperor Effect &mdash; both signs of stagnation.</p>
+            <ul class="indicator-list">
+              <li class="indicator-item"><span class="indicator-num">8.1</span><span class="indicator-text">Engage with leaders and stakeholders at eye level and bring their perspective to the table clearly.</span></li>
+              <li class="indicator-item"><span class="indicator-num">8.2</span><span class="indicator-text">Act autonomously within their mandate and do not wait for approvals when they can decide themselves.</span></li>
+              <li class="indicator-item"><span class="indicator-num">8.3</span><span class="indicator-text">Proactively seek help or external expertise when needed &mdash; without slipping into dependency.</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WHAT IT IS / ISN'T -->
-  <section class="section bg-dark" id="difference">
+  <section class="section bg-off-white" id="difference">
     <div class="container">
       <div class="text-center" style="margin-bottom:var(--space-12);">
         <p class="label">Clarity</p>
-        <h2 style="margin-top:var(--space-4);color:var(--color-off-white);">What The Masterful 8 is &mdash; and what it's not</h2>
+        <h2 style="margin-top:var(--space-4);color:var(--color-charcoal);">What The Masterful 8&#8482; is &mdash; and what it's not</h2>
       </div>
       <div class="is-isnot-grid">
         <div>
-          <h3 style="color:var(--color-off-white);margin-bottom:var(--space-8);">What it <span class="text-gold">is</span></h3>
-          <ul class="checklist checklist-yes" style="color:var(--color-light-gray);">
+          <h3 style="color:var(--color-charcoal);margin-bottom:var(--space-8);">What it <span class="text-gold">is</span></h3>
+          <ul class="checklist checklist-yes" style="color:#555;">
             <li>A diagnostic &amp; measurement model</li>
             <li>A common language for team capabilities</li>
             <li>A strategic compass for development investment</li>
@@ -298,8 +365,8 @@
           </ul>
         </div>
         <div>
-          <h3 style="color:var(--color-off-white);margin-bottom:var(--space-8);">What it is <span style="color:var(--color-deep-red);">not</span></h3>
-          <ul class="checklist checklist-no">
+          <h3 style="color:var(--color-charcoal);margin-bottom:var(--space-8);">What it is <span style="color:var(--color-deep-red);">not</span></h3>
+          <ul class="checklist checklist-no" style="color:#555;">
             <li>A work methodology (not Agile, Scrum, SAFe)</li>
             <li>A fixed curriculum or syllabus</li>
             <li>A performance management system</li>
@@ -326,8 +393,13 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="../index.html"><img src="../images/logo-dark.svg" alt="The Masterful 8™" height="50"></a>
+          <a href="../index.html"><img src="../images/logo-compact-dark.svg" alt="The Masterful 8™" height="50"></a>
           <p style="margin-top:var(--space-4);">The global standard for measuring what actually drives organizational performance.</p>
+          <div class="footer-social" style="margin-top:var(--space-6);">
+            <a href="https://www.linkedin.com/company/masterful8/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
         </div>
         <div>
           <p class="footer-heading">The System</p>
@@ -335,7 +407,7 @@
         </div>
         <div>
           <p class="footer-heading">Solutions</p>
-          <ul class="footer-links"><li><a href="enterprise.html">For Organizations</a></li><li><a href="partners.html">For Coaches</a></li><li><a href="partners.html#certification">Certification</a></li></ul>
+          <ul class="footer-links"><li><a href="enterprise.html">For Organizations</a></li><li><a href="partners.html">For Coaches</a></li><li><a href="partners.html#certification">Certification</a></li><li><a href="partners.html#network">Practitioner Network</a></li></ul>
         </div>
         <div>
           <p class="footer-heading">Company</p>
@@ -356,6 +428,7 @@
     const mt=document.querySelector('.nav-mobile-toggle'),mm=document.querySelector('.nav-mobile-menu');
     mt.addEventListener('click',()=>{mt.classList.toggle('open');mm.classList.toggle('open');document.body.classList.toggle('menu-open');});
     document.querySelectorAll('.nav-mobile-menu .nav-dropdown-toggle').forEach(b=>{b.addEventListener('click',e=>{e.preventDefault();b.closest('.nav-item').classList.toggle('open');});});
+    document.querySelectorAll('.dimension-full .dim-header').forEach(h=>{h.addEventListener('click',()=>{h.closest('.dimension-full').classList.toggle('open');});});
   </script>
 </body>
 </html>
