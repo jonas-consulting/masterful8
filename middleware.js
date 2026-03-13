@@ -1,3 +1,5 @@
+import { next } from '@vercel/edge';
+
 export default function middleware(request) {
   const auth = request.headers.get('authorization');
 
@@ -7,7 +9,7 @@ export default function middleware(request) {
       const decoded = atob(encoded);
       const [user, pass] = decoded.split(':');
       if (user === 'masterful8' && pass === 'masterful8') {
-        return;
+        return next();
       }
     }
   }
@@ -16,6 +18,7 @@ export default function middleware(request) {
     status: 401,
     headers: {
       'WWW-Authenticate': 'Basic realm="Masterful 8"',
+      'Content-Type': 'text/plain',
     },
   });
 }
