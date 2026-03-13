@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="70" viewBox="0 0 260 70">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500&amp;display=swap');</style>
+  <defs>
+    <radialGradient id="g" cx="35%" cy="30%" r="60%" fx="30%" fy="25%"><stop offset="0%" stop-color="#f5e6b3"/><stop offset="30%" stop-color="#c9a962"/><stop offset="60%" stop-color="#a88a3d"/><stop offset="100%" stop-color="#6b5a28"/></radialGradient>
+    <radialGradient id="h" cx="30%" cy="25%" r="25%"><stop offset="0%" stop-color="rgba(255,255,255,0.7)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>
+    <radialGradient id="w" cx="50%" cy="45%" r="50%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#e8e8e8"/></radialGradient>
+    <filter id="gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3" result="b"/><feFlood flood-color="#c9a962" flood-opacity="0.3"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- 8-Ball — centered on text block -->
+  <circle cx="30" cy="30" r="26" fill="url(#g)" filter="url(#gl)"/>
+  <ellipse cx="22" cy="19" rx="9" ry="6" fill="url(#h)"/>
+  <circle cx="30" cy="30" r="12" fill="url(#w)"/>
+  <circle cx="30" cy="30" r="12" fill="none" stroke="#c9a962" stroke-width="1" opacity="0.7"/>
+  <text x="30" y="36" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#1a1a1a" text-anchor="middle">8</text>
+  <circle cx="17" cy="12" r="2" fill="rgba(255,255,255,0.5)"/>
+  <!-- THE label -->
+  <text x="70" y="22" font-family="'Inter',sans-serif" font-weight="500" font-size="8" fill="#c9a962" letter-spacing="0.2em" opacity="0.55">THE</text>
+  <!-- Masterful 8™ -->
+  <text x="70" y="44" font-family="'Playfair Display',serif" font-weight="500" font-size="22" fill="#c9a962">Masterful 8<tspan dx="1" dy="-8" font-family="'Inter',sans-serif" font-weight="500" font-size="12" opacity="0.6">™</tspan></text>
+</svg>
