@@ -28,7 +28,9 @@ const LOGIN_HTML = `<!DOCTYPE html>
     body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0a;font-family:'Inter','Helvetica Neue',sans-serif;color:#f5f5f3}
     .login-wrap{width:100%;max-width:400px;padding:0 24px}
     .login-logo{text-align:center;margin-bottom:48px}
-    .login-logo svg{height:48px;width:auto;opacity:.85}
+    .login-logo{font-family:'Playfair Display',Georgia,serif;font-size:2rem;font-weight:400;letter-spacing:-.01em;opacity:.85}
+    .login-logo span{color:#c9a962;font-weight:500}
+    .login-logo sup{font-size:.5em;color:#c9a962;vertical-align:super;font-family:'Inter',sans-serif}
     .login-title{font-family:'Playfair Display',Georgia,serif;font-size:1.75rem;font-weight:400;text-align:center;margin-bottom:8px;letter-spacing:-.01em}
     .login-sub{text-align:center;color:#6b6b6b;font-size:.875rem;margin-bottom:40px}
     .field{position:relative;margin-bottom:24px}
@@ -43,13 +45,7 @@ const LOGIN_HTML = `<!DOCTYPE html>
 </head>
 <body>
   <div class="login-wrap">
-    <div class="login-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" height="48">
-        <text x="0" y="36" font-family="'Playfair Display',Georgia,serif" font-size="32" font-weight="400" fill="#f5f5f3" letter-spacing="-0.02em">The Masterful</text>
-        <text x="168" y="36" font-family="'Playfair Display',Georgia,serif" font-size="32" font-weight="500" fill="#c9a962"> 8</text>
-        <text x="188" y="22" font-family="'Inter',sans-serif" font-size="10" fill="#c9a962">\u2122</text>
-      </svg>
-    </div>
+    <div class="login-logo">The Masterful <span>8</span><sup>\u2122</sup></div>
     <h1 class="login-title">Welcome</h1>
     <p class="login-sub">Enter the password to continue</p>
     <form method="POST" action="/login">
