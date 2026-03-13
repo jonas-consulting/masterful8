@@ -1,5 +1,3 @@
-import { next } from '@vercel/edge';
-
 export default function middleware(request) {
   const auth = request.headers.get('authorization');
 
@@ -9,7 +7,7 @@ export default function middleware(request) {
       const decoded = atob(encoded);
       const [user, pass] = decoded.split(':');
       if (user === 'masterful8' && pass === 'masterful8') {
-        return next();
+        return undefined;
       }
     }
   }
