@@ -75,13 +75,11 @@
       fill: rgba(201, 169, 98, 0.15);
       stroke: var(--color-gold);
       stroke-width: 2;
-      transition: all 0.6s ease;
     }
 
     .radar-dot {
       fill: var(--color-gold);
       r: 4;
-      transition: all 0.6s ease;
     }
 
     .radar-dot:hover {
@@ -89,30 +87,6 @@
       filter: drop-shadow(0 0 8px rgba(201, 169, 98, 0.6));
     }
 
-    .radar-score {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-
-    .radar-score-number {
-      font-family: var(--font-serif);
-      font-size: var(--text-5xl);
-      font-weight: 400;
-      color: var(--color-gold);
-      line-height: 1;
-    }
-
-    .radar-score-label {
-      font-family: var(--font-sans);
-      font-size: var(--text-xs);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--color-gray);
-      margin-top: var(--space-1);
-    }
 
     /* Audience Cards */
     .audience-card {
@@ -341,9 +315,6 @@
         font-size: 9px;
       }
 
-      .radar-score-number {
-        font-size: var(--text-3xl);
-      }
     }
 
     /* Light-section overrides */
@@ -472,7 +443,7 @@
 
       <!-- Radar Chart -->
       <div class="radar-container" id="radar">
-        <svg viewBox="0 0 360 360">
+        <svg viewBox="-60 -20 480 400" style="overflow:visible;">
           <!-- Grid circles -->
           <polygon class="radar-grid" points="180,40 290,85 310,180 290,275 180,320 70,275 50,180 70,85" />
           <polygon class="radar-grid" points="180,75 255,105 270,180 255,255 180,285 105,255 90,180 105,105" />
@@ -504,20 +475,15 @@
           <circle class="radar-dot" cx="108" cy="102" />
 
           <!-- Labels -->
-          <text class="radar-label" x="180" y="28">Self-Discipline</text>
-          <text class="radar-label" x="305" y="78">Self-Organize</text>
-          <text class="radar-label" x="335" y="184">Self-Directed</text>
-          <text class="radar-label" x="305" y="292">Self-Learning</text>
-          <text class="radar-label" x="180" y="342">Self-Calibrate</text>
-          <text class="radar-label" x="55" y="292">Self-Challenge</text>
-          <text class="radar-label" x="25" y="184">Self-Caring</text>
-          <text class="radar-label" x="55" y="78">Self-Empowering</text>
+          <text class="radar-label" x="180" y="22">Self-Discipline</text>
+          <text class="radar-label" x="312" y="72">Self-Organize</text>
+          <text class="radar-label" x="340" y="184">Self-Directed</text>
+          <text class="radar-label" x="312" y="298">Self-Learning</text>
+          <text class="radar-label" x="180" y="348">Self-Calibrate</text>
+          <text class="radar-label" x="48" y="298">Self-Challenge</text>
+          <text class="radar-label" x="20" y="184">Self-Caring</text>
+          <text class="radar-label" x="48" y="72">Self-Empowering</text>
         </svg>
-
-        <div class="radar-score">
-          <div class="radar-score-number" id="scoreNumber">74</div>
-          <div class="radar-score-label">M8 Score</div>
-        </div>
       </div>
 
       <h1 class="hero-quote" style="font-style: normal; font-weight: 400;">
@@ -1102,44 +1068,71 @@
 
     startAutoSlide();
 
-    // ── Radar animation on load ──
+    // ── Radar animation ──
     const radarShape = document.getElementById('radarShape');
-    const scoreNum = document.getElementById('scoreNumber');
+    const dots = document.querySelectorAll('.radar-dot');
+    const cx = 180, cy = 180;
 
-    // Animate score counting
-    let count = 0;
-    const target = 74;
-    const scoreInterval = setInterval(() => {
-      count += 2;
-      if (count >= target) {
-        count = target;
-        clearInterval(scoreInterval);
-      }
-      scoreNum.textContent = count;
-    }, 30);
+    // Base data points (distance from center for each of the 8 axes)
+    const basePoints = [
+      {angle: -Math.PI/2,        dist: 112},  // Self-Discipline (top)
+      {angle: -Math.PI/4,        dist: 105},  // Self-Organize
+      {angle: 0,                 dist: 130},  // Self-Directed
+      {angle: Math.PI/4,         dist: 108},  // Self-Learning
+      {angle: Math.PI/2,         dist: 95},   // Self-Calibrate
+      {angle: 3*Math.PI/4,       dist: 100},  // Self-Challenge
+      {angle: Math.PI,           dist: 105},  // Self-Caring
+      {angle: -3*Math.PI/4,      dist: 98},   // Self-Empowering
+    ];
 
-    // Morph radar shape (start collapsed, expand)
-    const centerPoints = '180,180 180,180 180,180 180,180 180,180 180,180 180,180 180,180';
-    const finalPoints = radarShape.getAttribute('points');
+    // Each point gets unique wobble params for organic feel
+    const wobbleParams = basePoints.map((_, i) => ({
+      speed1: 0.8 + Math.random() * 0.6,
+      speed2: 1.2 + Math.random() * 0.8,
+      amp1: 6 + Math.random() * 8,
+      amp2: 4 + Math.random() * 6,
+      phase1: Math.random() * Math.PI * 2,
+      phase2: Math.random() * Math.PI * 2,
+    }));
 
-    radarShape.setAttribute('points', centerPoints);
-    setTimeout(() => {
-      radarShape.style.transition = 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      radarShape.setAttribute('points', finalPoints);
+    // Initial expand from center
+    let expandProgress = 0;
+    const expandDuration = 1500;
+    const startTime = performance.now();
 
-      // Also animate dots
-      document.querySelectorAll('.radar-dot').forEach(dot => {
-        const finalCx = dot.getAttribute('cx');
-        const finalCy = dot.getAttribute('cy');
-        dot.setAttribute('cx', '180');
-        dot.setAttribute('cy', '180');
-        dot.style.transition = 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        setTimeout(() => {
-          dot.setAttribute('cx', finalCx);
-          dot.setAttribute('cy', finalCy);
-        }, 50);
+    function easeOutElastic(t) {
+      if (t === 0 || t === 1) return t;
+      return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
+    }
+
+    function animate(now) {
+      const elapsed = now - startTime;
+      expandProgress = Math.min(1, elapsed / expandDuration);
+      const ease = easeOutElastic(expandProgress);
+
+      const pts = basePoints.map((bp, i) => {
+        const wp = wobbleParams[i];
+        const t = now / 1000;
+        const wobble = expandProgress >= 1
+          ? Math.sin(t * wp.speed1 + wp.phase1) * wp.amp1 + Math.sin(t * wp.speed2 + wp.phase2) * wp.amp2
+          : 0;
+        const d = (bp.dist + wobble) * ease;
+        return {
+          x: cx + Math.cos(bp.angle) * d,
+          y: cy + Math.sin(bp.angle) * d
+        };
       });
-    }, 300);
+
+      radarShape.setAttribute('points', pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' '));
+      dots.forEach((dot, i) => {
+        dot.setAttribute('cx', pts[i].x.toFixed(1));
+        dot.setAttribute('cy', pts[i].y.toFixed(1));
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
   </script>
 
 </body>
