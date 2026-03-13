@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="The Masterful 8&#8482; &mdash; The global standard for measuring what actually drives organizational performance. 8 Dimensions. 24 Behavioral Indicators.">
+  <meta name="keywords" content="Masterful 8, Organizational Development, Leadership, Self-Sustainability, Team Performance, Behavioral Indicators, Assessment">
+
+  <title>The Masterful 8&#8482; | The Global Standard for Organizational Self-Sustainability</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://masterful8.com/">
+  <meta property="og:title" content="The Masterful 8&#8482; | Organizational Self-Sustainability">
+  <meta property="og:description" content="Stop measuring what happened. Start measuring what's coming. 8 Dimensions. 24 Behavioral Indicators. The global standard.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <style>
+    /* ── M8 Homepage Specific ── */
+
+    /* Radar Chart */
+    .radar-container {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      margin: 0 auto var(--space-12);
+    }
+
+    .radar-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .radar-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      fill: var(--color-light-gray);
+      text-anchor: middle;
+    }
+
+    .radar-label:hover {
+      fill: var(--color-gold);
+      cursor: pointer;
+    }
+
+    .radar-grid {
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 1;
+      fill: none;
+    }
+
+    .radar-axis {
+      stroke: rgba(255, 255, 255, 0.06);
+      stroke-width: 1;
+    }
+
+    .radar-shape {
+      fill: rgba(201, 169, 98, 0.15);
+      stroke: var(--color-gold);
+      stroke-width: 2;
+      transition: all 0.6s ease;
+    }
+
+    .radar-dot {
+      fill: var(--color-gold);
+      r: 4;
+      transition: all 0.6s ease;
+    }
+
+    .radar-dot:hover {
+      r: 7;
+      filter: drop-shadow(0 0 8px rgba(201, 169, 98, 0.6));
+    }
+
+    .radar-score {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .radar-score-number {
+      font-family: var(--font-serif);
+      font-size: var(--text-5xl);
+      font-weight: 400;
+      color: var(--color-gold);
+      line-height: 1;
+    }
+
+    .radar-score-label {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-gray);
+      margin-top: var(--space-1);
+    }
+
+    /* Audience Cards */
+    .audience-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: var(--space-8);
+      text-align: center;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .audience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--color-gold);
+      transform: scaleX(0);
+      transition: transform var(--transition-base);
+    }
+
+    .audience-card:hover {
+      border-color: rgba(201, 169, 98, 0.3);
+      background: rgba(201, 169, 98, 0.05);
+    }
+
+    .audience-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .audience-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-4);
+      opacity: 0.7;
+    }
+
+    .audience-card h4 {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-wide);
+      margin-bottom: var(--space-3);
+      color: var(--color-off-white);
+    }
+
+    .audience-card p {
+      font-size: var(--text-sm);
+      color: var(--color-gray);
+      margin-bottom: var(--space-6);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Steps */
+    .step-card {
+      text-align: center;
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .step-number {
+      font-family: var(--font-serif);
+      font-size: var(--text-5xl);
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: var(--space-4);
+      opacity: 0.4;
+    }
+
+    .step-card h4 {
+      font-family: var(--font-sans);
+      font-size: var(--text-lg);
+      font-weight: var(--font-semibold);
+      margin-bottom: var(--space-3);
+    }
+
+    .step-card p {
+      font-size: var(--text-sm);
+      color: var(--color-gray);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Dimension Preview */
+    .dimension-preview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 968px) {
+      .dimension-preview {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dimension-preview {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dim-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: var(--space-6);
+      transition: all var(--transition-base);
+    }
+
+    .dim-card:hover {
+      border-color: rgba(201, 169, 98, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .dim-number {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: var(--space-3);
+    }
+
+    .dim-name {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-off-white);
+      margin-bottom: var(--space-2);
+    }
+
+    .dim-desc {
+      font-size: var(--text-xs);
+      color: var(--color-gray);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      padding: var(--space-12) 0;
+      border-top: 1px solid rgba(201, 169, 98, 0.2);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+    }
+
+    /* Logo Cloud Extended */
+    .logo-cloud-dark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-10);
+      flex-wrap: wrap;
+      opacity: 0.5;
+    }
+
+    .logo-cloud-dark span {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: var(--font-medium);
+      color: var(--color-light-gray);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    /* Testimonial Slider */
+    .testimonial-slider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial-slide {
+      min-width: 100%;
+      padding: 0 var(--space-6);
+    }
+
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+
+    .testimonial-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-dark-gray);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      padding: 0;
+    }
+
+    .testimonial-dot.active {
+      background: var(--color-gold);
+      transform: scale(1.3);
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.08) 0%, rgba(201, 169, 98, 0.02) 100%);
+      border: 1px solid rgba(201, 169, 98, 0.25);
+      padding: var(--space-16) var(--space-12);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .radar-container {
+        width: 280px;
+        height: 280px;
+      }
+
+      .radar-label {
+        font-size: 9px;
+      }
+
+      .radar-score-number {
+        font-size: var(--text-3xl);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <span class="nav-logo-name">The Masterful 8&#8482;</span>
+          <span class="nav-logo-title">Organizational Self-Sustainability</span>
+        </a>
+
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="pages/model.html" class="nav-link">The System</a>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                <a href="pages/model.html">The Model</a>
+                <a href="pages/model.html#dimensions">8 Dimensions</a>
+                <a href="pages/model.html#indicators">24 Behavioral Indicators</a>
+                <a href="pages/model.html#difference">What M8 Is &amp; Isn't</a>
+                <div style="border-top: 1px solid rgba(201,169,98,0.3); margin: 6px 0;"></div>
+                <a href="pages/assessment.html" style="color: var(--color-gold); font-weight: 500;">Free Self-Assessment</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="pages/enterprise.html" class="nav-link">For Organizations</a>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                <a href="pages/enterprise.html">Enterprise Solutions</a>
+                <a href="pages/enterprise.html#readiness">Excellence Readiness</a>
+                <a href="pages/enterprise.html#journeys">Performance Journeys</a>
+                <a href="pages/enterprise.html#cases">Case Studies</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="pages/partners.html" class="nav-link">For Coaches &amp; Partners</a>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                <a href="pages/partners.html">Why License M8</a>
+                <a href="pages/partners.html#certification">Certification Program</a>
+                <a href="pages/partners.html#network">Practitioner Network</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="pages/about.html" class="nav-link">About</a>
+          </li>
+        </ul>
+
+        <div style="display: flex; align-items: center; gap: var(--space-4);">
+          <a href="pages/assessment.html" class="btn nav-cta">Free Assessment</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="nav-mobile-toggle" aria-label="Open Menu">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile-menu">
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="pages/model.html" class="nav-link">The System</a>
+        <button class="nav-dropdown-toggle" aria-label="Toggle submenu"></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="pages/model.html">The Model</a>
+            <a href="pages/model.html#dimensions">8 Dimensions</a>
+            <a href="pages/model.html#indicators">24 Behavioral Indicators</a>
+            <a href="pages/assessment.html">Free Self-Assessment</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="pages/enterprise.html" class="nav-link">For Organizations</a>
+        <button class="nav-dropdown-toggle" aria-label="Toggle submenu"></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="pages/enterprise.html">Enterprise Solutions</a>
+            <a href="pages/enterprise.html#readiness">Excellence Readiness</a>
+            <a href="pages/enterprise.html#journeys">Performance Journeys</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="pages/partners.html" class="nav-link">For Coaches &amp; Partners</a>
+        <button class="nav-dropdown-toggle" aria-label="Toggle submenu"></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="pages/partners.html">Why License M8</a>
+            <a href="pages/partners.html#certification">Certification</a>
+            <a href="pages/partners.html#network">Practitioner Network</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="pages/about.html" class="nav-link">About</a></li>
+    </ul>
+    <a href="pages/assessment.html" class="btn nav-cta" style="margin-top: var(--space-6);">Free Assessment</a>
+  </div>
+
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero bg-dark">
+    <div class="hero-content">
+      <p class="label" style="margin-bottom: var(--space-6);">The Masterful 8&#8482;</p>
+
+      <!-- Radar Chart -->
+      <div class="radar-container" id="radar">
+        <svg viewBox="0 0 360 360">
+          <!-- Grid circles -->
+          <polygon class="radar-grid" points="180,40 290,85 310,180 290,275 180,320 70,275 50,180 70,85" />
+          <polygon class="radar-grid" points="180,75 255,105 270,180 255,255 180,285 105,255 90,180 105,105" />
+          <polygon class="radar-grid" points="180,110 220,128 230,180 220,232 180,250 140,232 130,180 140,128" />
+          <polygon class="radar-grid" points="180,145 198,152 200,180 198,208 180,215 162,208 160,180 162,152" />
+
+          <!-- Axes -->
+          <line class="radar-axis" x1="180" y1="180" x2="180" y2="40" />
+          <line class="radar-axis" x1="180" y1="180" x2="290" y2="85" />
+          <line class="radar-axis" x1="180" y1="180" x2="310" y2="180" />
+          <line class="radar-axis" x1="180" y1="180" x2="290" y2="275" />
+          <line class="radar-axis" x1="180" y1="180" x2="180" y2="320" />
+          <line class="radar-axis" x1="180" y1="180" x2="70" y2="275" />
+          <line class="radar-axis" x1="180" y1="180" x2="50" y2="180" />
+          <line class="radar-axis" x1="180" y1="180" x2="70" y2="85" />
+
+          <!-- Data shape -->
+          <polygon class="radar-shape" id="radarShape"
+            points="180,68 268,100 285,180 258,258 180,275 95,240 75,180 108,102" />
+
+          <!-- Data points -->
+          <circle class="radar-dot" cx="180" cy="68" />
+          <circle class="radar-dot" cx="268" cy="100" />
+          <circle class="radar-dot" cx="285" cy="180" />
+          <circle class="radar-dot" cx="258" cy="258" />
+          <circle class="radar-dot" cx="180" cy="275" />
+          <circle class="radar-dot" cx="95" cy="240" />
+          <circle class="radar-dot" cx="75" cy="180" />
+          <circle class="radar-dot" cx="108" cy="102" />
+
+          <!-- Labels -->
+          <text class="radar-label" x="180" y="28">Self-Discipline</text>
+          <text class="radar-label" x="305" y="78">Self-Organize</text>
+          <text class="radar-label" x="335" y="184">Self-Directed</text>
+          <text class="radar-label" x="305" y="292">Self-Learning</text>
+          <text class="radar-label" x="180" y="342">Self-Calibrate</text>
+          <text class="radar-label" x="55" y="292">Self-Challenge</text>
+          <text class="radar-label" x="25" y="184">Self-Caring</text>
+          <text class="radar-label" x="55" y="78">Self-Empowering</text>
+        </svg>
+
+        <div class="radar-score">
+          <div class="radar-score-number" id="scoreNumber">74</div>
+          <div class="radar-score-label">M8 Score</div>
+        </div>
+      </div>
+
+      <h1 class="hero-quote" style="font-style: normal; font-weight: 400;">
+        Stop measuring what happened.<br>
+        <span class="text-gold">Start measuring what's coming.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        8 Dimensions. 24 Behavioral Indicators. The global standard for
+        organizational self-sustainability.
+      </p>
+
+      <div class="hero-cta" style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+        <a href="pages/assessment.html" class="btn btn-primary">Free Self-Assessment</a>
+        <a href="pages/model.html" class="btn btn-secondary">Explore the Model</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Discover</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       AUDIENCE PATHS
+       ============================================ -->
+  <section class="section bg-dark">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-16);">
+        <p class="label">One Framework. Multiple Paths.</p>
+        <h2 style="margin-top: var(--space-4); color: var(--color-off-white);">
+          How can we help you?
+        </h2>
+      </div>
+
+      <div class="grid grid-3">
+        <a href="pages/enterprise.html" class="audience-card" style="text-decoration: none;">
+          <div class="audience-icon">&#9670;</div>
+          <h4>I lead an organization</h4>
+          <p>
+            Deploy M8 across teams and business units.
+            Get real-time visibility into the behavioral capabilities
+            that drive performance.
+          </p>
+          <span class="btn btn-ghost" style="font-size: var(--text-xs);">Enterprise Solutions</span>
+        </a>
+
+        <a href="pages/assessment.html" class="audience-card" style="text-decoration: none;">
+          <div class="audience-icon">&#9651;</div>
+          <h4>I lead a team</h4>
+          <p>
+            Take the free Self-Assessment and discover your team's
+            M8 Score. Understand where to invest for maximum impact.
+          </p>
+          <span class="btn btn-ghost" style="font-size: var(--text-xs);">Free Assessment</span>
+        </a>
+
+        <a href="pages/partners.html" class="audience-card" style="text-decoration: none;">
+          <div class="audience-icon">&#9711;</div>
+          <h4>I'm a coach or consultant</h4>
+          <p>
+            License The Masterful 8 for your practice.
+            Get certified, access the platform, and join a
+            global practitioner network.
+          </p>
+          <span class="btn btn-ghost" style="font-size: var(--text-xs);">Certification &amp; Licensing</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       SOCIAL PROOF
+       ============================================ -->
+  <section class="bg-dark" style="padding: var(--space-16) 0;">
+    <div class="container">
+      <p class="text-center label" style="margin-bottom: var(--space-10);">
+        Trusted by leaders at
+      </p>
+      <div class="logo-cloud-dark">
+        <span>BMW</span>
+        <span>E.ON</span>
+        <span>adidas</span>
+        <span>Deutsche Bahn</span>
+        <span>EnBW</span>
+        <span>MediaMarktSaturn</span>
+        <span>BayWa r.e.</span>
+        <span>Uniper</span>
+        <span>PAYBACK</span>
+        <span>Einride</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       THE PROBLEM / WHY M8
+       ============================================ -->
+  <section class="section bg-charcoal">
+    <div class="container">
+      <div class="grid grid-2" style="align-items: center;">
+        <div>
+          <p class="label" style="margin-bottom: var(--space-6);">The Problem</p>
+          <h2 style="color: var(--color-off-white); margin-bottom: var(--space-6);">
+            You're measuring<br>the wrong things.
+          </h2>
+          <p style="font-size: var(--text-lg); color: var(--color-light-gray); line-height: var(--leading-relaxed); margin-bottom: var(--space-6);">
+            95% of organizations rely on lagging indicators &mdash; revenue,
+            margins, delivery dates. These tell you what happened yesterday.
+            Not what's coming tomorrow.
+          </p>
+          <p style="font-size: var(--text-base); color: var(--color-gray); line-height: var(--leading-relaxed);">
+            The Masterful 8 measures the <em>leading</em> behavioral indicators
+            that predict organizational performance &mdash; before the numbers
+            tell the story.
+          </p>
+        </div>
+        <div style="padding: var(--space-8);">
+          <div style="border-left: 2px solid var(--color-gold); padding-left: var(--space-6);">
+            <p style="font-size: var(--text-sm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-4);">Above the surface</p>
+            <p style="color: var(--color-light-gray); margin-bottom: var(--space-2);">Revenue &amp; Margins</p>
+            <p style="color: var(--color-light-gray); margin-bottom: var(--space-2);">KPIs &amp; OKRs</p>
+            <p style="color: var(--color-light-gray); margin-bottom: var(--space-8);">Delivery Dates</p>
+
+            <p style="font-size: var(--text-sm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-4);">Below the surface</p>
+            <p style="color: var(--color-off-white); margin-bottom: var(--space-2); font-weight: 500;">Ownership &amp; Accountability</p>
+            <p style="color: var(--color-off-white); margin-bottom: var(--space-2); font-weight: 500;">Learning Agility</p>
+            <p style="color: var(--color-off-white); margin-bottom: var(--space-2); font-weight: 500;">Feedback Culture</p>
+            <p style="color: var(--color-off-white); margin-bottom: var(--space-2); font-weight: 500;">Decision-Making Quality</p>
+            <p style="color: var(--color-off-white); font-weight: 500;">Self-Organization</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       HOW IT WORKS
+       ============================================ -->
+  <section class="section bg-dark">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-16);">
+        <p class="label">How It Works</p>
+        <h2 style="margin-top: var(--space-4); color: var(--color-off-white);">
+          Three steps to clarity
+        </h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 style="color: var(--color-off-white);">Assess</h4>
+          <p>
+            Rate your team across 24 behavioral indicators.
+            Takes 8 minutes. Produces a quantified M8 Score
+            and radar profile.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 style="color: var(--color-off-white);">Understand</h4>
+          <p>
+            See exactly where your team excels and where
+            invisible gaps are holding back performance.
+            Benchmark against industry peers.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 style="color: var(--color-off-white);">Act</h4>
+          <p>
+            Get targeted recommendations. Focus development
+            investment where it creates the highest leverage.
+            Track progress over time.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-12);">
+        <a href="pages/assessment.html" class="btn btn-primary">Start Your Free Assessment</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       8 DIMENSIONS PREVIEW
+       ============================================ -->
+  <section class="section bg-charcoal">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-16);">
+        <p class="label">The Model</p>
+        <h2 style="margin-top: var(--space-4); color: var(--color-off-white);">
+          8 Dimensions of Self-Sustainability
+        </h2>
+        <p class="text-lead" style="margin-top: var(--space-4); color: var(--color-light-gray); max-width: 600px; margin-left: auto; margin-right: auto;">
+          Each dimension captures a critical capability that high-performing teams demonstrate consistently.
+        </p>
+      </div>
+
+      <div class="dimension-preview">
+        <div class="dim-card">
+          <div class="dim-number">1</div>
+          <div class="dim-name">Self-Discipline</div>
+          <div class="dim-desc">Reliability &amp; conflict capability</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">2</div>
+          <div class="dim-name">Self-Organize</div>
+          <div class="dim-desc">Structure, data &amp; outcomes</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">3</div>
+          <div class="dim-name">Self-Directed</div>
+          <div class="dim-desc">Goals &amp; value focus</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">4</div>
+          <div class="dim-name">Self-Learning</div>
+          <div class="dim-desc">Curiosity &amp; improvement</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">5</div>
+          <div class="dim-name">Self-Calibrate</div>
+          <div class="dim-desc">Real-time course correction</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">6</div>
+          <div class="dim-name">Self-Challenge</div>
+          <div class="dim-desc">Constructive dissent &amp; accountability</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">7</div>
+          <div class="dim-name">Self-Caring</div>
+          <div class="dim-desc">Human connection &amp; sustainability</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-number">8</div>
+          <div class="dim-name">Self-Empowering</div>
+          <div class="dim-desc">Adult relationship to authority</div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-12);">
+        <a href="pages/model.html" class="btn btn-ghost" style="color: var(--color-gold);">Explore all 24 Behavioral Indicators</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       STATS
+       ============================================ -->
+  <section class="bg-dark" style="padding: var(--space-6) 0;">
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Dimensions</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">24</div>
+          <div class="stat-label">Behavioral Indicators</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">12,000+</div>
+          <div class="stat-label">Hours of Research</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1,350+</div>
+          <div class="stat-label">Leaders Supported</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       WHAT M8 IS / IS NOT
+       ============================================ -->
+  <section class="section bg-dark">
+    <div class="container">
+      <div class="grid grid-2" style="max-width: 900px; margin: 0 auto;">
+        <div>
+          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-8);">
+            What The Masterful 8 <span class="text-gold">is</span>
+          </h3>
+          <ul class="checklist checklist-yes" style="color: var(--color-light-gray);">
+            <li>A diagnostic &amp; measurement model</li>
+            <li>A common language for capabilities</li>
+            <li>A strategic compass for development</li>
+            <li>An evidence-based, iterative tool</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-8);">
+            What it is <span style="color: var(--color-deep-red);">not</span>
+          </h3>
+          <ul class="checklist checklist-no">
+            <li>A work methodology (not Agile, Scrum, SAFe)</li>
+            <li>A fixed curriculum or syllabus</li>
+            <li>A performance management system</li>
+            <li>A culture transformation program</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       TESTIMONIALS
+       ============================================ -->
+  <section class="section bg-charcoal">
+    <div class="container" style="max-width: 900px;">
+      <div class="text-center" style="margin-bottom: var(--space-16);">
+        <p class="label">What Leaders Say</p>
+      </div>
+
+      <div class="testimonial-slider" id="testimonialSlider">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-slide">
+            <div class="testimonial-large">
+              <p class="testimonial-text-large">
+                "Christian was able to create a circle of trust allowing open and honest conversations.
+                With his deep experience and expertise, but also his calm demeanor, Christian brings gravitas.
+                Should I again get the chance to work with Christian &mdash; I'd do it in a heartbeat."
+              </p>
+              <div style="margin-top: var(--space-6);">
+                <p style="color: var(--color-off-white); font-weight: 500;">Mathias Wiecher</p>
+                <p style="font-size: var(--text-sm); color: var(--color-gray);">formerly E.ON Drive</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-large">
+              <p class="testimonial-text-large">
+                "Truly the best coach I had the pleasure of working with in my career.
+                His approach combines deep psychological understanding with practical
+                business impact."
+              </p>
+              <div style="margin-top: var(--space-6);">
+                <p style="color: var(--color-off-white); font-weight: 500;">Jonas Steigertahl</p>
+                <p style="font-size: var(--text-sm); color: var(--color-gray);">Director, TP Infinity</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-large">
+              <p class="testimonial-text-large">
+                "One of those rare coaches that knows what it takes to transform an organization.
+                Masterfully connects psychological principles with business objectives."
+              </p>
+              <div style="margin-top: var(--space-6);">
+                <p style="color: var(--color-off-white); font-weight: 500;">Tamara de Wit</p>
+                <p style="font-size: var(--text-sm); color: var(--color-gray);">adidas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-large">
+              <p class="testimonial-text-large">
+                "Christian's starting point is not the theories. He goes beyond and explains the
+                'human design' &mdash; brain physiology and human psychology. His impact on entire
+                companies cannot be valued high enough."
+              </p>
+              <div style="margin-top: var(--space-6);">
+                <p style="color: var(--color-off-white); font-weight: 500;">Lise Ostergaard Kallman</p>
+                <p style="font-size: var(--text-sm); color: var(--color-gray);">E.ON Drive</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-nav" id="testimonialNav">
+          <button class="testimonial-dot active" data-index="0"></button>
+          <button class="testimonial-dot" data-index="1"></button>
+          <button class="testimonial-dot" data-index="2"></button>
+          <button class="testimonial-dot" data-index="3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       ENTERPRISE + COACHES SPLIT CTA
+       ============================================ -->
+  <section class="section bg-dark">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="cta-banner">
+          <p class="label" style="margin-bottom: var(--space-4);">For Organizations</p>
+          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-4);">
+            Scale Self-Sustainability Across Your Organization
+          </h3>
+          <p style="color: var(--color-gray); margin-bottom: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+            Deploy The Masterful 8 across teams and business units.
+            Get aggregated insights, heatmaps, and executive reporting.
+          </p>
+          <a href="pages/enterprise.html" class="btn btn-primary">Enterprise Solutions</a>
+        </div>
+
+        <div class="cta-banner">
+          <p class="label" style="margin-bottom: var(--space-4);">For Coaches &amp; Partners</p>
+          <h3 style="color: var(--color-off-white); margin-bottom: var(--space-4);">
+            Add M8 to Your Practice
+          </h3>
+          <p style="color: var(--color-gray); margin-bottom: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+            Get certified, license the platform, and join a global network
+            of practitioners using The Masterful 8.
+          </p>
+          <a href="pages/partners.html" class="btn btn-primary">Certification Program</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       FINAL CTA
+       ============================================ -->
+  <section class="section-lg bg-dark">
+    <div class="container" style="max-width: 700px;">
+      <div class="text-center">
+        <h2 style="color: var(--color-off-white); margin-bottom: var(--space-6);">
+          Ready to see what's<br>
+          <span class="text-gold">below the surface?</span>
+        </h2>
+        <p style="color: var(--color-gray); margin-bottom: var(--space-10); font-size: var(--text-lg); line-height: var(--leading-relaxed);">
+          Take the free Self-Assessment. 8 minutes. 24 questions.
+          One score that changes how you lead.
+        </p>
+        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+          <a href="pages/assessment.html" class="btn btn-primary">Start Free Assessment</a>
+          <a href="pages/contact.html" class="btn btn-secondary">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="display: inline-block;">
+            <span class="nav-logo-name" style="font-size: var(--text-base);">The Masterful 8&#8482;</span>
+            <span class="nav-logo-title">Organizational Self-Sustainability</span>
+          </a>
+          <p style="margin-top: var(--space-4);">
+            The global standard for measuring what
+            actually drives organizational performance.
+          </p>
+          <div class="footer-social" style="margin-top: var(--space-6);">
+            <a href="https://www.linkedin.com/company/masterful8/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-heading">The System</p>
+          <ul class="footer-links">
+            <li><a href="pages/model.html">The Model</a></li>
+            <li><a href="pages/assessment.html">Free Assessment</a></li>
+            <li><a href="pages/model.html#dimensions">8 Dimensions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Solutions</p>
+          <ul class="footer-links">
+            <li><a href="pages/enterprise.html">For Organizations</a></li>
+            <li><a href="pages/partners.html">For Coaches</a></li>
+            <li><a href="pages/partners.html#certification">Certification</a></li>
+            <li><a href="pages/partners.html#network">Practitioner Network</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">Company</p>
+          <ul class="footer-links">
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+          <p class="footer-contact-text" style="margin-top: var(--space-4);">
+            hello@masterful8.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Masterful 8&#8482;. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="pages/imprint.html">Imprint</a>
+          <a href="pages/privacy.html">Privacy Policy</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: var(--color-gray);">The Masterful 8&#8482; is a registered trademark.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script>
+    // ── Navigation scroll effect ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Mobile menu toggle ──
+    const mobileToggle = document.querySelector('.nav-mobile-toggle');
+    const mobileMenu = document.querySelector('.nav-mobile-menu');
+
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Mobile dropdown toggles
+    document.querySelectorAll('.nav-mobile-menu .nav-dropdown-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        btn.closest('.nav-item').classList.toggle('open');
+      });
+    });
+
+    // ── Fade-in on scroll ──
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeEls.forEach(el => fadeObserver.observe(el));
+
+    // ── Testimonial slider ──
+    const track = document.getElementById('testimonialTrack');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let currentSlide = 0;
+    let autoSlide;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.dataset.index));
+        clearInterval(autoSlide);
+        startAutoSlide();
+      });
+    });
+
+    function startAutoSlide() {
+      autoSlide = setInterval(() => {
+        goToSlide((currentSlide + 1) % dots.length);
+      }, 6000);
+    }
+
+    startAutoSlide();
+
+    // ── Radar animation on load ──
+    const radarShape = document.getElementById('radarShape');
+    const scoreNum = document.getElementById('scoreNumber');
+
+    // Animate score counting
+    let count = 0;
+    const target = 74;
+    const scoreInterval = setInterval(() => {
+      count += 2;
+      if (count >= target) {
+        count = target;
+        clearInterval(scoreInterval);
+      }
+      scoreNum.textContent = count;
+    }, 30);
+
+    // Morph radar shape (start collapsed, expand)
+    const centerPoints = '180,180 180,180 180,180 180,180 180,180 180,180 180,180 180,180';
+    const finalPoints = radarShape.getAttribute('points');
+
+    radarShape.setAttribute('points', centerPoints);
+    setTimeout(() => {
+      radarShape.style.transition = 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      radarShape.setAttribute('points', finalPoints);
+
+      // Also animate dots
+      document.querySelectorAll('.radar-dot').forEach(dot => {
+        const finalCx = dot.getAttribute('cx');
+        const finalCy = dot.getAttribute('cy');
+        dot.setAttribute('cx', '180');
+        dot.setAttribute('cy', '180');
+        dot.style.transition = 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        setTimeout(() => {
+          dot.setAttribute('cx', finalCx);
+          dot.setAttribute('cy', finalCy);
+        }, 50);
+      });
+    }, 300);
+  </script>
+
+</body>
+</html>
